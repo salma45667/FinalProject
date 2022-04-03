@@ -1,0 +1,37 @@
+@import url("https://fonts.googleapis.com/css?family=Muli&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 120px;
+  background-color: beige;
+}
+.card {
+  color: black;
+  width: 200px;
+  height: 300px;
+  cursor: pointer;
+}
+p {
+  letter-spacing: 2px;
+}
+
+.card p {
+  font-size: 10px;
+  font-weight: bolder;
+}
+
+.card:hover {
+  transform: scale(0.9);
+}
+
+.btn:hover {
+  transform: scale(0.9);
+}
