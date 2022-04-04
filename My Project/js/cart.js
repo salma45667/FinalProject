@@ -79,6 +79,7 @@ let products = [
     inCart: 0,
   },
 ];
+console.log(localStorage.getItem("productsInCart"));
 
 for (let i = 0; i < carts.length; i++) {
   carts[i].addEventListener("click", () => {
@@ -148,7 +149,7 @@ function displayCart() {
       productContainer.innerHTML += `
       
       <div class="products">
-        <ion-icon type="button" class="remove-btn" name="close-circle" onclick=""></ion-icon>
+        <ion-icon type="button" class="remove-btn" name="close-circle" onclick="removeItem(event);updateCartTotal() "></ion-icon>
         <div class="details">
         <img src="${item.img}"  width="100px"  >
        <span>${item.name}</span>
@@ -182,15 +183,33 @@ function displayCart() {
     `;
   }
 
-  let removeBttons = document.getElementsByClassName("remove-btn");
-  for (let i = 0; i < removeBttons.length; i++) {
-    removeBttons[i].addEventListener("click", removeItem);
-  }
+  // let removeBttons = document.getElementsByClassName("remove-btn");
+  // // for (let i = 0; i < removeBttons.length; i++) {
+  // //   removeBttons[i].addEventListener("click", removeItem);
+  // // }
+  // removeBttons[0].addEventListener("click", removeItem);
+}
 
-  function removeItem(event) {
-    removeBttons = event.target;
-    removeBttons_grandparent = removeBttons.parentElement.parentElement;
-    removeBttons_grandparent.remove();
+function removeItem(event) {
+  removeBttons = event.target;
+  removeBttons_grandparent = removeBttons.parentElement;
+  removeBttons_grandparent.remove();
+  updateCartTotal();
+}
+
+function updateCartTotal() {
+  let cartContent = document.getElementsByClassName("wrapper")[0];
+  let cartBox = document.getElementsByClassName("card")[0];
+  let total = 0;
+  for (let i = 0; i < cartBox.length; i++) {
+    let cartbox = cartBox[i];
+    let priceElement = cartBox.getElementsByClassName("price")[0];
+    let quantityElement = cartBox.getElementsByClassName("quantity")[0];
+    let price = parseFloat(priceElement.innerText.replace("$", ""));
+    let quantity = quantityElement.value;
+    total = total + price * quantity;
+    document.getElementsByClassName("total")[0].innerText = "$" + total;
+    console.log(updateCartTotal);
   }
 }
 

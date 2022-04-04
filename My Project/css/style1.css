@@ -181,18 +181,11 @@ section {
 .navbar ul li:hover {
   border-radius: 3px;
 }
-.sub-menu-1 {
-  display: none;
-}
-
-.navbar ul li:hover .sub-menu-1 {
-  display: block;
-  position: absolute;
-  background-color: #023047;
-}
 
 .sub-menu-2 {
   display: none;
+  position: fixed;
+  z-index: 10000;
 }
 
 .navbar ul li:hover .sub-menu-2 {
@@ -206,10 +199,6 @@ section {
   display: block;
   position: absolute;
   background-color: #023047;
-}
-
-.sub-menu-1 {
-  display: none;
 }
 
 .header .header-2 .navbar a {
